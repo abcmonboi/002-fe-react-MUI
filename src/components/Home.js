@@ -31,8 +31,10 @@ const Home = () => {
             <Text
               color="success"
               weight="bold"
-              size={62}
-              css={{ textAlign: "center" }}
+              size={40}
+              css={{
+                textAlign: "center",
+              }}
             >
               {user?.email
                 ? user?.email.split("@")[0].toUpperCase()
@@ -105,49 +107,36 @@ const Home = () => {
           + Thêm file CSV với định dạng phải đúng yêu cầu theo mẫu :
           <Spacer y={1} />
           <Row justify="center">
-          <table
-            aria-label="Example table with static content"
-            css={{
-              height: "auto",
-              minWidth: "100%",
-              border:"1px solid #ecedee",
-              width: "100%",
-            }}
-          >
-            <tr>
-              <th style={{
-                width: "80px",
-                float : "left",
-              }} >Email</th>
-              <th  style={{
-                width: "100px",
-              }}>First Name</th>
-              <th  style={{
-                width: "100px",
-                float : "left",
-              }}>Last Name</th>
-            </tr>
-            <tr>
-              <td> Email 1</td>
-              <td>Họ 1</td>
-              <td>Tên 1</td>
-            </tr>
-            <tr>
-              <td> Email 2</td>
-              <td>Họ 2</td>
-              <td>Tên 2</td>
-            </tr>
-            <tr>
-              <td> Email 3</td>
-              <td>Họ 3</td>
-              <td>Tên 3</td>
-            </tr>
-            <tr>
-              <td> Email 4</td>
-              <td>Họ 4</td>
-              <td>Tên 4</td>
-            </tr>
-          </table>
+            <table
+              aria-label="Example table with static content"
+              className="template-table"
+            >
+              <tr>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+              </tr>
+              <tr>
+                <td> Email 1</td>
+                <td>Họ 1</td>
+                <td>Tên 1</td>
+              </tr>
+              <tr>
+                <td> Email 2</td>
+                <td>Họ 2</td>
+                <td>Tên 2</td>
+              </tr>
+              <tr>
+                <td> Email 3</td>
+                <td>Họ 3</td>
+                <td>Tên 3</td>
+              </tr>
+              <tr>
+                <td> Email 4</td>
+                <td>Họ 4</td>
+                <td>Tên 4</td>
+              </tr>
+            </table>
           </Row>
           <Spacer y={1} />
         </Text>

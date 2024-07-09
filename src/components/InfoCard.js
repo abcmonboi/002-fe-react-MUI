@@ -1,6 +1,7 @@
 import React from "react";
 import {AiFillFacebook} from "react-icons/ai";
 import { Card, Text, Row, Col, Button } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 const InfoCard = (srcImage) => {
   return (
     <Card css={{ w: "100%", h: "400px" }} variant isPressable>
@@ -37,31 +38,21 @@ const InfoCard = (srcImage) => {
           <Col>
             <Row justify="flex-end">
               <Button flat auto rounded color="warning">
-                <a
-                  style={{
-                    color: "inherit",
-                    textDecoration: "none",
-                    "&:hover": {
-                      textDecoration: "underline",
-                    },
-                  }}
-                  size={12}
-                  weight="bold"
-                  transform="uppercase"
-                  href="https://www.facebook.com/abboypd"
-                >
+                <Link to={"https://www.facebook.com/abboypd"} target="_blank">
                   <div
                     style={{
                       display: "flex",
-                      alignitems: "center",
+                      alignItems: "center",
                       justifyContent: "center",
                       gap: "5px",
                     }}
                   >
                     <AiFillFacebook />
-                  {"Connect"}
+                    <span>
+                      {"Connect"}
+                    </span>
                   </div>
-                </a>
+                </Link>
               </Button>
             </Row>
           </Col>

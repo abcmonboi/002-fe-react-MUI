@@ -10,7 +10,7 @@ import {
 import { Layout } from "../components/Layout";
 import React, { useEffect } from "react";
 import logoab from "../assets/images/channels4_profile.jpg";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { handleUserLogout } from "../redux/actions/userActions";
@@ -20,7 +20,7 @@ const Header = (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.account);
   const auth = useSelector((state) => state.user.auth);
-  const [location,setLocation] = useState(window.location.pathname);
+  const [location, setLocation] = useState(window.location.pathname);
   const handleLogout = () => {
     if (user && auth === true) {
       dispatch(handleUserLogout());
@@ -28,9 +28,20 @@ const Header = (props) => {
       navigate("/login");
     }
   };
-useEffect(() => {
-  setLocation(window.location.pathname);
-},[window.location.pathname])
+  useEffect(() => {
+    setLocation(window.location.pathname);
+  }, [window.location.pathname]);
+  const collapseItems = [
+    "Features",
+    "Customers",
+    "Pricing",
+    "Company",
+    "Legal",
+    "Team",
+    "Help & Feedback",
+    "Login",
+    "Sign Up",
+  ];
   return (
     <>
       {/* <Navbar bg="dark" variant="dark" expand="lg">
@@ -87,20 +98,23 @@ useEffect(() => {
             backgroundColor: "transparent",
 
             bgBlur: (value) => ({
-              bf: 'saturate(100%) blur(2px)',
-              bg: value
+              bf: "saturate(100%) blur(2px)",
+              bg: value,
             }),
           }}
           css={{
             bgBlur: (value) => ({
-              bf: 'saturate(100%) blur(2px)',
-              bg: value
+              bf: "saturate(100%) blur(2px)",
+              bg: value,
             }),
             backgroundColor: "transparent",
             borderBottom: "1px solid #2c2c2c",
           }}
         >
           <Navbar.Brand>
+          <Navbar.Toggle  hideIn=""
+           aria-label="toggle navigation" />
+            
             <NavLink to="/">
               <Image
                 css={{
@@ -112,22 +126,56 @@ useEffect(() => {
               ></Image>
             </NavLink>
             <Spacer x={0.5} />
-            <Text b color="inherit" hideIn="xs">
-              Developer
-            </Text>
+            <Link to="/">
+              <Text b color="white" hideIn="xs">
+                Developer
+              </Text>
+            </Link>
           </Navbar.Brand>
           <Navbar.Content
             hideIn="xs"
             variant={"underline-rounded"}
             activeColor={"warning"}
           >
-            <Navbar.Link onClick={() => navigate("/")} isActive={location ==="/"}>Trang Chính</Navbar.Link>
-            <Navbar.Link onClick={() => navigate("/user")} isActive={location ==="/user"}>
+            <Navbar.Link
+              onClick={() => navigate("/")}
+              isActive={location === "/"}
+            >
+              Trang Chính
+            </Navbar.Link>
+            <Navbar.Link
+              onClick={() => navigate("/user")}
+              isActive={location === "/user"}
+            >
               Quản lý người dùng
             </Navbar.Link>
           </Navbar.Content>
-          <Navbar.Content></Navbar.Content>
 
+          <Navbar.Collapse>
+          <Navbar.CollapseItem key="home">
+            <Link
+              color="inherit"
+              css={{
+                minWidth: "100%",
+              }}
+              onClick={() => navigate("/")}
+            >
+              Trang Chính
+            </Link>
+          </Navbar.CollapseItem>
+          <Navbar.CollapseItem key="user">
+            <Link
+              color="inherit"
+              css={{
+                minWidth: "100%",
+              }}
+           
+              onClick={() => navigate("/user")}
+            >
+             Quản lý người dùng
+            </Link>
+          </Navbar.CollapseItem>
+      </Navbar.Collapse>
           <Navbar.Content
             css={{
               "@xs": {
@@ -137,13 +185,9 @@ useEffect(() => {
             }}
           >
             {user?.token ? (
-             
               <Dropdown placement="bottom-right">
-                
                 <Navbar.Item>
-             
                   <Dropdown.Trigger>
-                   
                     <Avatar
                       bordered
                       as="button"
@@ -160,7 +204,7 @@ useEffect(() => {
                     textValue="Profile"
                   >
                     <Text b color="inherit" css={{ d: "flex" }}>
-                     Tài khoản
+                      Tài khoản
                     </Text>
                     <Text b color="inherit" css={{ d: "flex" }}>
                       {user && user.email.split("@")[0]}
@@ -173,9 +217,7 @@ useEffect(() => {
                     withDivider
                     color="warning"
                   >
-                    <div onClick={() => handleLogout()}>
-                      Đăng xuất
-                    </div>
+                    <div onClick={() => handleLogout()}>Đăng xuất</div>
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -188,9 +230,7 @@ useEffect(() => {
                     // as={Link}
                     onPress={() => navigate("/login")}
                   >
-
                     Đăng nhập
-
                   </Button>
                 </Navbar.Item>
               </>

@@ -48,9 +48,9 @@ const Login = () => {
       <Grid.Container
         justify="center"
         css={{
-          height: "80vh",
+          height: "100vh",
           backgroundImage: `url(${background})`,
-          backgroundSize: "contain",
+          backgroundSize: "cover",
           backgroundPosition: "center",
           width: "100%",
 

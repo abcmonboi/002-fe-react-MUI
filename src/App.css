@@ -76,3 +76,20 @@ code {
   justify-content: center;
  
 }
+.template-table {
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+.template-table th {
+  background-color: #000000;
+  color: #fff;
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+.template-table td {
+  padding: 4px;
+  border-bottom: 1px solid #000;
+  border: 1px solid #ccc;
+
+}

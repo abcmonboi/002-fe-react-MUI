@@ -21,16 +21,8 @@ function App() {
     <>
       <div className="app-container">
         <Header />
-        <Container
-          fluid
-          css={{
-            backgroundColor: "#000000",
-            margin: "0",
-            padding: "0",
-          }}
-        >
+        
           <AppRouters />
-        </Container>
       </div>
 
       <ToastContainer
